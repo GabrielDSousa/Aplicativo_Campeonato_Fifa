@@ -82,7 +82,18 @@ public class AdmJogosActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Campeonato campeonato = (Campeonato) intent.getSerializableExtra("campeonato");
         DAO dao = new DAO(AdmJogosActivity.this);
-        CampeonatoDao cDao = new CampeonatoDao(dao);
+        JogoDao jogoDao = new JogoDao(dao);
+        List<Jogo> jogos = jogoDao.buscaJogoPorCampeonato(campeonato);
+        boolean finalizado = true;
+        for (Jogo jogo:jogos){
+            if(jogo.getStatus().equals("Em aberto")){
+                finalizado = false;
+                break;
+            }
+        }
+
+        if(finalizado){
+            CampeonatoDao cDao = new CampeonatoDao(dao);
             switch (item.getItemId()){
                 case R.id.menu_formulario_ok:
                     campeonato.setStatus("Ver resultados");
@@ -93,6 +104,12 @@ public class AdmJogosActivity extends AppCompatActivity {
             Toast.makeText(AdmJogosActivity.this, "Veja os resultados", Toast.LENGTH_LONG).show();
             finish();
             return super.onOptionsItemSelected(item);
+        }else {
+            Toast.makeText(AdmJogosActivity.this, "Finalize todos os jogos primeiro", Toast.LENGTH_LONG).show();
+            return super.onOptionsItemSelected(item);
+        }
+
+
     }
 
 

@@ -37,13 +37,20 @@ public class ResultadoActivity extends AppCompatActivity {
         GolDao golDao = new GolDao(dao);
 
         List<Gol> gols = golDao.buscaGoleador(campeonato);
-        goleador = findViewById(R.id.goleador);
-        goleador.setText("Goleador: "+gols.get(0).getJogador());
+        if(gols.size()>0){
+            goleador = findViewById(R.id.goleador);
+            goleador.setText("Goleador: "+gols.get(0).getJogador());
+        }else {
+            goleador = findViewById(R.id.goleador);
+            goleador.setText("Não houve goleador");
+        }
 
         List<Gol> golsPlayer = golDao.buscaPlayerArtilheiro(campeonato);
-        Player player = golsPlayer.get(0).getPlayer();
-        player.setPontuacao(player.getPontuacao()+5);
-        playerDao.atualiza(player);
+        if(golsPlayer.size()>0){
+            Player player = golsPlayer.get(0).getPlayer();
+            player.setPontuacao(player.getPontuacao()+5);
+            playerDao.atualiza(player);
+        }
 
         List<Player>players=playerDao.buscaPlayerPorCampeonato(campeonato);
 

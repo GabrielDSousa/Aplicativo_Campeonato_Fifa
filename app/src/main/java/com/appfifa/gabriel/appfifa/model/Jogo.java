@@ -69,6 +69,6 @@ public class Jogo implements Serializable{
 
     @Override
     public String toString() {
-        return getPlacarPlayer1()+" __ "+getPlayer1().getNome()+" X "+getPlayer2().getNome()+" __ "+getPlacarPlayer2()+" __-__"+getStatus();
+        return "\n"+getPlacarPlayer1()+"    "+getPlayer1().getNome()+" X "+getPlayer2().getNome()+"    "+getPlacarPlayer2()+"\n\nStatus:"+getStatus()+"\n";
     }
 }

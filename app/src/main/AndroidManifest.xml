@@ -9,18 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:label="@string/main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormularioCampeonatoActivity" />
-        <activity android:name=".AddPlayerActivity" />
-        <activity android:name=".AdmJogosActivity" />
-        <activity android:name=".ResultadoActivity" />
-        <activity android:name=".JogoActivity"></activity>
+        <activity android:name=".FormularioCampeonatoActivity" android:label="@string/formulario_activity"/>
+        <activity android:name=".AddPlayerActivity" android:label="@string/add_player_activity"/>
+        <activity android:name=".AdmJogosActivity" android:label="@string/adm_jogos_activity"/>
+        <activity android:name=".ResultadoActivity" android:label="@string/resultado_activity"/>
+        <activity android:name=".JogoActivity" android:label="@string/jogo_activity" />
     </application>
 
 </manifest>

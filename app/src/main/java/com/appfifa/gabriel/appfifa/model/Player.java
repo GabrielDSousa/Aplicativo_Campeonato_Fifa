@@ -35,7 +35,7 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return getId()+" -> "+getNome()+" - Time: "+getTime()+" / Pontos: "+getPontuacao();
+        return "\n"+getId()+" -- "+getNome()+" - Time: "+getTime()+"\nPontos: "+getPontuacao()+"\n";
     }
 
     public String getTime() {

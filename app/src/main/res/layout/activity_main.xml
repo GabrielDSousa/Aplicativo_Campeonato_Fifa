@@ -13,7 +13,7 @@
     <Button
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:text="+"
+        android:text=""
         android:textColor="#fff"
         android:textSize="40sp"
         android:elevation="6dp"
@@ -22,6 +22,6 @@
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
         android:stateListAnimator="@null"
-        android:background="@drawable/background_btn"
+        android:background="@drawable/bola_futebol"
         android:id="@+id/btn_novo_campeonato"/>
 </RelativeLayout>

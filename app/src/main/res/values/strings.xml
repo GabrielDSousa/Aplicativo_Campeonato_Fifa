@@ -168,8 +168,10 @@
         <item>Santos - Jogador11</item>
     </string-array>
 
-
+    <string name="main_activity">Campeonatos Fifa</string>
+    <string name="formulario_activity">Novo Campeonato Fifa</string>
+    <string name="add_player_activity">Jogadores do Campeonato</string>
+    <string name="adm_jogos_activity">Jogos do Campeonato</string>
+    <string name="jogo_activity">Jogo</string>
+    <string name="resultado_activity">Resultado do Campeonato</string>
 </resources>
-
-
-    <!--String[] jogadores = {"Cássio", "Balbuena", "Rodriguinho", "Fagner", "Henrique", "Gabriel", "Maycon", "Romero", "Clayson", "Sidcley"};-->

@@ -60,12 +60,14 @@ public class JogoActivity extends AppCompatActivity {
                 DAO dao = new DAO(JogoActivity.this);
                 PlayerDao pDao = new PlayerDao(dao);
 
-                radioGroup = findViewById(R.id.radioGroup);
-                int radioId = radioGroup.getCheckedRadioButtonId();
-                radioSelected = findViewById(radioId);
-                String playerToString = radioSelected.getText().toString();
-                char idChar = playerToString.charAt(0);
-                long id = idChar - '0';
+                //String a ser analisada
+                String Str = radioSelected.getText().toString();
+                //Posição do caracter na string
+                int pos = Str.indexOf("-");
+                //Substring iniciando em 0 até posição do caracter especial
+                String idStr = Str.substring(1, pos-1);
+                Long id= Long.parseLong(idStr);
+
                 Player player = pDao.buscaPlayerPorId(jogo.getCampeonato(), id );
                 gol.setPlayer(player);
 
@@ -161,11 +163,11 @@ public class JogoActivity extends AppCompatActivity {
         jogadores_spinner = findViewById(R.id.jogadores_spinner);
 
         if(time.contains("Corinthians")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoCorinthians, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoCorinthians, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("São Paulo")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoSaoPaulo, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoSaoPaulo, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Palmeiras")){
@@ -173,35 +175,35 @@ public class JogoActivity extends AppCompatActivity {
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Grêmio")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoGremio, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoGremio, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Internacional")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoInternacional, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoInternacional, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Atlético Paranaense")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoAtleticoParanaense, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoAtleticoParanaense, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Cruzeiro")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoCruzeiro, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoCruzeiro, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Flamengo")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoFlamengo, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoFlamengo, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Fluminense")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoFluminense, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoFluminense, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Atlético Mineiro")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoAtleticoMineiro, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoAtleticoMineiro, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
         if(time.contains("Santos")){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoSantos, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(JogoActivity.this, R.array.escalacaoSantos, android.R.layout.simple_spinner_dropdown_item);
             jogadores_spinner.setAdapter(adapter);
         }
     }
