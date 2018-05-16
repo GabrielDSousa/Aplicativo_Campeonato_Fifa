@@ -53,6 +53,7 @@ public class AdmJogosActivity extends AppCompatActivity {
                 if(jogo.getStatus().equals("Em aberto")){
                     Intent intentVaiParaJogo =  new Intent(AdmJogosActivity.this, JogoActivity.class);
                     intentVaiParaJogo.putExtra("jogo", jogo);
+                    Toast.makeText(AdmJogosActivity.this,"Selecione um player, antes de adicionar o gol", Toast.LENGTH_LONG).show();
                     startActivity(intentVaiParaJogo);
                 }else {
                     Toast.makeText(AdmJogosActivity.this,"Jogo já finalizado", Toast.LENGTH_SHORT).show();

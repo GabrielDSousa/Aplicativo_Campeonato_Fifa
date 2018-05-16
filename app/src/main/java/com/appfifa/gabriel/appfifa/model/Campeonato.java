@@ -33,6 +33,6 @@ public class Campeonato implements Serializable {
 
     @Override
     public String toString() {
-        return "\nCampeonato: "+getNome() +"\n\nStatus: "+ getStatus()+"\n";
+        return "\nCampeonato: "+getNome() +"\n\nClique aqui para "+ getStatus()+"\n";
     }
 }

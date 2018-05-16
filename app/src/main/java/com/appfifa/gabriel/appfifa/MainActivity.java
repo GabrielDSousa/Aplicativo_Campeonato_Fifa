@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.appfifa.gabriel.appfifa.dao.CampeonatoDao;
 import com.appfifa.gabriel.appfifa.dao.DAO;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentVaiParaFormularioNovoCampeonato);
             }
         });
+
+        Toast.makeText(MainActivity.this,"Clique na bola para novo campeonato", Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DAO extends SQLiteOpenHelper {
     public DAO(Context context) {
-        super(context, "campeonatoDB", null, 20);
+        super(context, "campeonatoDB", null, 21);
     }
 
     public static final String CREATE_TABLE_CAMPEONATO = "CREATE TABLE Campeonato (id INTEGER PRIMARY KEY, nome TEXT NOT NULL, status TEXT NOT NULL)";

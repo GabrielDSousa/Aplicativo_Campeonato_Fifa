@@ -46,7 +46,6 @@ public class JogoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         jogo = (Jogo) intent.getSerializableExtra("jogo");
 
-        carregaSpinner(null);
         carrgeaNomeDoRadio(jogo);
 
         btn_salvar_gol = findViewById(R.id.btn_add_gol);
@@ -60,32 +59,37 @@ public class JogoActivity extends AppCompatActivity {
                 DAO dao = new DAO(JogoActivity.this);
                 PlayerDao pDao = new PlayerDao(dao);
 
-                //String a ser analisada
-                String Str = radioSelected.getText().toString();
-                //Posição do caracter na string
-                int pos = Str.indexOf("-");
-                //Substring iniciando em 0 até posição do caracter especial
-                String idStr = Str.substring(1, pos-1);
-                Long id= Long.parseLong(idStr);
 
-                Player player = pDao.buscaPlayerPorId(jogo.getCampeonato(), id );
-                gol.setPlayer(player);
-
-                String itemSpinerJogador = (String) jogadores_spinner.getSelectedItem();
-                gol.setJogador(itemSpinerJogador);
-
-                GolDao golDao = new GolDao(dao);
-                golDao.insere(gol);
-
-                JogoDao jDao = new JogoDao(dao);
-                if(player.getId().equals(jogo.getPlayer1().getId())){
-                    jogo.setPlacarPlayer1(jogo.getPlacarPlayer1()+1);
+                if(radioSelected == null){
+                    Toast.makeText(JogoActivity.this,"Selecione um player, antes de adicionar o gol", Toast.LENGTH_LONG).show();
                 }else {
-                    jogo.setPlacarPlayer2(jogo.getPlacarPlayer2()+1);
+                    //String a ser analisada
+                    String Str = radioSelected.getText().toString();
+                    //Posição do caracter na string
+                    int pos = Str.indexOf("-");
+                    //Substring iniciando em 0 até posição do caracter especial
+                    String idStr = Str.substring(1, pos-1);
+                    Long id= Long.parseLong(idStr);
+
+                    Player player = pDao.buscaPlayerPorId(jogo.getCampeonato(), id );
+                    gol.setPlayer(player);
+
+                    String itemSpinerJogador = (String) jogadores_spinner.getSelectedItem();
+                    gol.setJogador(itemSpinerJogador);
+
+                    GolDao golDao = new GolDao(dao);
+                    golDao.insere(gol);
+
+                    JogoDao jDao = new JogoDao(dao);
+                    if(player.getId().equals(jogo.getPlayer1().getId())){
+                        jogo.setPlacarPlayer1(jogo.getPlacarPlayer1()+1);
+                    }else {
+                        jogo.setPlacarPlayer2(jogo.getPlacarPlayer2()+1);
+                    }
+                    jDao.atualiza(jogo);
+                    dao.close();
+                    carregaLista();
                 }
-                jDao.atualiza(jogo);
-                dao.close();
-                recreate();
             }
         });
     }

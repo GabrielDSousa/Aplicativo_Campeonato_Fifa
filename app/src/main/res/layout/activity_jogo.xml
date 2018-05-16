@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/radio1"
-            android:checked="true"
             android:onClick="carregaSpinner"/>
         <RadioButton
             android:layout_width="match_parent"

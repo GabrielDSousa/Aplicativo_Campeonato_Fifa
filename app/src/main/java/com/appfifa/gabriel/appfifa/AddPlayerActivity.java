@@ -55,10 +55,27 @@ public class AddPlayerActivity extends AppCompatActivity {
 
                 DAO dao = new DAO(AddPlayerActivity.this);
                 PlayerDao pDao = new PlayerDao(dao);
-                pDao.insere(player);
-                dao.close();
-                recreate();
 
+                List<Player> players = pDao.buscaPlayerPorCampeonato(campeonato);
+
+                boolean podeGravar = true;
+
+                for (Player p : players){
+                    if(p.getNome().equals(player.getNome())){
+                        Toast.makeText(AddPlayerActivity.this, "Já possui um jogador com esse nome", Toast.LENGTH_LONG).show();
+                        podeGravar = false;
+                        break;
+                    }else if(p.getTime().equals(player.getTime())){
+                        Toast.makeText(AddPlayerActivity.this, "Já possui um jogador com esse time", Toast.LENGTH_LONG).show();
+                        podeGravar = false;
+                        break;
+                    }
+                }
+                 if(podeGravar){
+                     pDao.insere(player);
+                     dao.close();
+                     carregaLista();
+                 }
             }
         });
     }
@@ -104,7 +121,7 @@ public class AddPlayerActivity extends AppCompatActivity {
 
     public void preencheSpinner(){
         spinnerTimes = (Spinner)findViewById(R.id.times_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(AddPlayerActivity.this, R.array.times, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(AddPlayerActivity.this, R.array.times, android.R.layout.simple_spinner_dropdown_item);
         spinnerTimes.setAdapter(adapter);
     }
 
